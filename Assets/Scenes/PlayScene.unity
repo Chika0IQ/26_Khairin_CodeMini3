@@ -1121,7 +1121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd5d2a9f10ccc445916b2c29da88a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Touching: 0
   Player: {fileID: 2103069171}
 --- !u!64 &1290455321
 MeshCollider:
@@ -1883,8 +1882,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149882c5d7b80364ebbb9da36f78ddc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHitBox: 0
   playerAnim: {fileID: 1723540023}
   plank: {fileID: 1522541476}
   CountDown: {fileID: 482164027}
   plankOB: {fileID: 1522541480}
-  moveScript: {fileID: 0}

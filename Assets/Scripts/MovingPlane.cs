@@ -9,8 +9,9 @@ public class MovingPlane : MonoBehaviour
     float zlimit;
     bool OnLimit;
     float currentPost;
-    public bool Touching = false;
+    //public bool Touching = false;
     public GameObject Player;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +21,13 @@ public class MovingPlane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentPost = transform.position.z;
-        zlimit = 36.50f;
-        if (Touching)
+        if (Player.GetComponent<PlayerController>().isHitBox)
         {
+            currentPost = transform.position.z;
+            zlimit = 36.50f;
             if (currentPost < zlimit && OnLimit)
             {
-                MoveForward();
+               MoveForward();
             }
             else if (currentPost > 27.45f && !OnLimit)
             {
@@ -47,6 +48,7 @@ public class MovingPlane : MonoBehaviour
     {
         transform.Translate(Vector3.back * Time.deltaTime * speed);
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -59,6 +61,4 @@ public class MovingPlane : MonoBehaviour
     {
         Player.transform.parent = null;
     }
-
-
 }

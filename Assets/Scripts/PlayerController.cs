@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    float moveSpeed = 5.0f;
+    float moveSpeed = 10.0f;
     private int totalcorner;
     private int cornerleft;
     bool coneOn = false;
     float currentTime = 0f;
     float startTime = 10f;
 
+    public bool isHitBox;
+   
     float fTimerCount;
     float iCount;
 
@@ -24,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform plankOB;
 
-    public MovingPlane moveScript;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +44,6 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("LoseScene");
         }
-        
-
         CountDownController();
     }
 
@@ -123,13 +123,13 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if(other.gameObject.CompareTag("CubeTouch"))
+        if (other.gameObject.CompareTag("CubeTouch"))
         {
-            moveScript.Touching = true;
+            Debug.Log("OI TOUCH");
+            isHitBox = true;
         }
     }
     
-
     void CountDownController()
     {
         if (fTimerCount < 10 && TimerStarted == true)
