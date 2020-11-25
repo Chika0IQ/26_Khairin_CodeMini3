@@ -345,7 +345,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Timer Countdown: 10'
+  m_Text: 'Timer CountUp: 0'
 --- !u!222 &482164028
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1565,7 +1565,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778156598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.96, y: 1, z: -4.95}
+  m_LocalPosition: {x: 2.93, y: 1, z: -3.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1791,3 +1791,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnim: {fileID: 1723540023}
   plank: {fileID: 1522541476}
+  CountDown: {fileID: 482164027}

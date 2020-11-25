@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovingPlane : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class MovingPlane : MonoBehaviour
     float zlimit;
     bool OnLimit;
     float currentPost;
+    bool Touching = false;
     public GameObject Player;
     // Start is called before the first frame update
     void Start()
@@ -20,18 +22,20 @@ public class MovingPlane : MonoBehaviour
     {
         currentPost = transform.position.z;
         zlimit = 36.50f;
-
-        if (currentPost < zlimit && OnLimit)
+        if (Touching)
         {
-            MoveForward();
-        }
-        else if (currentPost > 27.45f && !OnLimit)
-        {
-            MoveBackward();
-        }
-        else
-        {
-            OnLimit = !OnLimit;
+            if (currentPost < zlimit && OnLimit)
+            {
+                MoveForward();
+            }
+            else if (currentPost > 27.45f && !OnLimit)
+            {
+                MoveBackward();
+            }
+            else
+            {
+                OnLimit = !OnLimit;
+            }
         }
     }
 
@@ -55,4 +59,6 @@ public class MovingPlane : MonoBehaviour
     {
         Player.transform.parent = null;
     }
+
+
 }
