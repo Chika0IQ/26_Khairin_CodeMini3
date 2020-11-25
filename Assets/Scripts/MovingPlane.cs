@@ -9,7 +9,7 @@ public class MovingPlane : MonoBehaviour
     float zlimit;
     bool OnLimit;
     float currentPost;
-    bool Touching = false;
+    public bool Touching = false;
     public GameObject Player;
     // Start is called before the first frame update
     void Start()

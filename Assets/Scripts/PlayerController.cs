@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public Text CountDown;
 
     public Transform plankOB;
+
+    public MovingPlane moveScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -123,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
         if(other.gameObject.CompareTag("CubeTouch"))
         {
-
+            moveScript.Touching = true;
         }
     }
     
