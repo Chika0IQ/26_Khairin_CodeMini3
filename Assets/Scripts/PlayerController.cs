@@ -5,56 +5,69 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     float moveSpeed = 5.0f;
+    private int totalcorner;
+    private int cornerleft;
+    bool coneOn = false;
 
 
     public Animator playerAnim;
+    public GameObject plank;
     // Start is called before the first frame update
     void Start()
     {
-        
+        totalcorner = GameObject.FindGameObjectsWithTag("TagCorner").Length;
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayerMovement();
+
+        if (cornerleft == totalcorner)
+        {
+            coneOn = true;
+        }
     }
     void PlayerMovement()
     {
-        /*if (Input.GetKeyDown(KeyCode.W))
-        {
-            playerAnim.SetBool("isRun", true);
-        }
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            playerAnim.SetBool("isRun", false);
-        }*/
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             playerAnim.SetTrigger("triggJump");
         }
 
 
-
         if (Input.GetKey(KeyCode.W))
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
-            
+
             StartRun();
         }
         else if (Input.GetKey(KeyCode.S))
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
-            
+
+            StartRun();
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            transform.rotation = Quaternion.Euler(0, 270, 0);
+
+            StartRun();
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+
             StartRun();
         }
 
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
+
+
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
         {
             playerAnim.SetBool("isRun", false);
         }
-        
+
 
     }
     void StartRun()
@@ -68,7 +81,21 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("TagCone"))
         {
-            Debug.Log("Adafaf");
+            if (coneOn == true)
+            {
+                Debug.Log("Cone is ON");
+                plank.transform.Rotate(0f,90f ,0f);
+            }
+            else
+            {
+                Debug.Log("Cone is OFF");
+            }
+        }
+
+        if (other.gameObject.CompareTag("TagCorner"))
+        {
+            cornerleft++;
+            Destroy(other.gameObject);
         }
     }
 }
