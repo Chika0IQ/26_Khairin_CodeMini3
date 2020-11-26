@@ -1678,7 +1678,7 @@ GameObject:
   - component: {fileID: 1909985058}
   m_Layer: 0
   m_Name: PlayPlaneA
-  m_TagString: Untagged
+  m_TagString: PlayPlaneA
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1887,3 +1887,6 @@ MonoBehaviour:
   plank: {fileID: 1522541476}
   CountDown: {fileID: 482164027}
   plankOB: {fileID: 1522541480}
+  PlayerMaterial:
+  - {fileID: 2100000, guid: b72c666bdd9d71546aa443f2a2b183ef, type: 2}
+  - {fileID: 2100000, guid: 9e665d259650e0e47b1cddac9e090ff3, type: 2}

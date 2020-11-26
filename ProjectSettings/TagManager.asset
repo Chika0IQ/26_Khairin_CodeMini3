@@ -8,6 +8,7 @@ TagManager:
   - TagCorner
   - MovingPlane
   - CubeTouch
+  - PlayPlaneA
   layers:
   - Default
   - TransparentFX

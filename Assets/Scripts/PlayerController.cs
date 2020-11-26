@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     float currentTime = 0f;
     float startTime = 10f;
 
+    bool onGround;
+
     public bool isHitBox;
    
     float fTimerCount;
@@ -25,14 +27,17 @@ public class PlayerController : MonoBehaviour
     public Text CountDown;
 
     public Transform plankOB;
+    public Material[] PlayerMaterial;
 
-    
+    Renderer PlayerRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
         currentTime = startTime;
         //plankOB.GetComponent<Transform>();
         totalcorner = GameObject.FindGameObjectsWithTag("TagCorner").Length;
+        PlayerRenderer = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -47,12 +52,12 @@ public class PlayerController : MonoBehaviour
         CountDownController();
     }
 
-
-    void PlayerMovement()
+    private void PlayerMovement()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             playerAnim.SetTrigger("triggJump");
+            PlayerRenderer.material.color = PlayerMaterial[1].color;
         }
 
 
@@ -88,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
 
     }
-    void StartRun()
+    private void StartRun()
     {
         playerAnim.SetBool("isRun", true);
         playerAnim.SetFloat("startRun", 0.26f);
@@ -129,8 +134,8 @@ public class PlayerController : MonoBehaviour
             isHitBox = true;
         }
     }
-    
-    void CountDownController()
+
+    private void CountDownController()
     {
         if (fTimerCount < 10 && TimerStarted == true)
         {
@@ -144,6 +149,15 @@ public class PlayerController : MonoBehaviour
             TimerStarted = false;
             plankOB.GetComponent<Transform>().Rotate(0, 90, 0);
             Debug.Log("Done");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("PlayPlaneA"))
+        {
+            Debug.Log("PLayPLanA");
+            PlayerRenderer.material.color = PlayerMaterial[0].color;
         }
     }
 }
